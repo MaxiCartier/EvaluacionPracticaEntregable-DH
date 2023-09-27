@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `sistema_administrador_ndt`.`usuarios` (
   `name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC))
 ENGINE = InnoDB;
 
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `sistema_administrador_ndt`.`notas` (
   `last_modification` DATETIME NOT NULL,
   `eliminate` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_usuarios_notas_idx` (`id_user` ASC) VISIBLE,
+  INDEX `fk_usuarios_notas_idx` (`id_user` ASC),
   CONSTRAINT `fk_usuarios_notas`
     FOREIGN KEY (`id_user`)
     REFERENCES `sistema_administrador_ndt`.`usuarios` (`id`)
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `sistema_administrador_ndt`.`notas_categories` (
   `id_notas` INT NOT NULL,
   `id_categories` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_notascategories_notas_idx` (`id_notas` ASC) VISIBLE,
+  INDEX `fk_notascategories_notas_idx` (`id_notas` ASC),
   CONSTRAINT `fk_notascategories_notas`
     FOREIGN KEY (`id_notas`)
     REFERENCES `sistema_administrador_ndt`.`notas` (`id`)
